@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>2026년 3분기 동종업계 공시분석</title>
+<style>
+:root{
+  --surface:#fcfcfb; --card:#ffffff; --line:#e4e3df; --line2:#f0efec;
+  --ink:#111110; --ink2:#4a4945; --ink3:#7d7c78;
+  --navy:#1f3864; --blue:#1f4e79; --accent:#2a78d6;
+  --good:#157a45; --bad:#b3261e; --goodbg:#eef7f1; --badbg:#fdf1f0; --infobg:#f0f4fa;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface);color:var(--ink);
+ font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic","맑은 고딕",-apple-system,sans-serif;
+ font-size:15.5px;line-height:1.82;letter-spacing:-.1px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px 80px}
+
+/* header */
+header{background:linear-gradient(180deg,#1f3864,#2a4a7a);color:#fff;padding:38px 0 30px;margin-bottom:0}
+header .wrap{padding-bottom:0}
+header h1{margin:0 0 6px;font-size:27px;letter-spacing:-.5px}
+header .sub{font-size:15px;opacity:.9;margin-bottom:14px}
+header .meta{font-size:12.5px;opacity:.72;line-height:1.9}
+header .meta b{opacity:1;font-weight:600}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(252,252,251,.94);
+ backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin-bottom:30px}
+nav .wrap{padding-top:0;padding-bottom:0;display:flex;gap:2px;flex-wrap:wrap}
+nav a{padding:13px 14px;font-size:14px;color:var(--ink2);text-decoration:none;
+ border-bottom:2px solid transparent;font-weight:500}
+nav a:hover{color:var(--navy);border-bottom-color:var(--accent)}
+
+h2{font-size:22px;margin:44px 0 4px;color:var(--navy);letter-spacing:-.3px}
+h2 .num{color:var(--accent);margin-right:7px}
+.lede{color:var(--ink2);font-size:14.5px;margin:0 0 18px}
+
+/* summary tiles */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0 8px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:16px 17px}
+.tile .co{font-size:12px;color:var(--ink3);font-weight:600;letter-spacing:.3px}
+.tile .verdict{font-size:19px;font-weight:700;margin:5px 0 9px;letter-spacing:-.3px}
+.tile .verdict.good{color:var(--good)} .tile .verdict.bad{color:var(--bad)}
+.tile .verdict.flat{color:var(--ink2)}
+.tile dl{margin:0;font-size:12.5px;display:grid;grid-template-columns:auto 1fr;gap:3px 10px}
+.tile dt{color:var(--ink3)} .tile dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+
+/* callout */
+.callout{background:var(--infobg);border-left:4px solid var(--accent);
+ border-radius:0 8px 8px 0;padding:16px 19px;margin:16px 0;font-size:14.6px;line-height:1.8}
+.callout.warn{background:var(--badbg);border-left-color:var(--bad)}
+.callout.ok{background:var(--goodbg);border-left-color:var(--good)}
+.callout b{color:var(--navy)} .callout.warn b{color:var(--bad)} .callout.ok b{color:var(--good)}
+.callout p{margin:0 0 6px} .callout p:last-child{margin:0}
+
+/* company card */
+.card{background:var(--card);border:1px solid var(--line);border-radius:13px;
+ margin:20px 0 30px;overflow:hidden;break-inside:avoid}
+.card > .head{padding:17px 22px;border-bottom:1px solid var(--line);
+ display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;background:#fbfbfa}
+.card > .head h3{margin:0;font-size:21px;color:var(--navy);letter-spacing:-.3px}
+.card > .head .tag{font-size:11.5px;padding:3px 9px;border-radius:20px;font-weight:600}
+.tag.good{background:var(--goodbg);color:var(--good)}
+.tag.bad{background:var(--badbg);color:var(--bad)}
+.tag.flat{background:#f2f2f0;color:var(--ink2)}
+.card > .head .oneline{font-size:14.5px;color:var(--ink2);flex:1 1 100%;margin-top:2px}
+
+.block{padding:18px 22px;border-top:1px solid var(--line2)}
+.block:first-of-type{border-top:none}
+.block > h4{margin:0 0 13px;font-size:14px;letter-spacing:.6px;color:var(--blue);
+ font-weight:700;display:flex;align-items:center;gap:8px}
+.block > h4::before{content:"";width:3px;height:13px;background:var(--accent);border-radius:2px}
+.block p{margin:0 0 12px;font-size:15px;line-height:1.85}
+.block p:last-child{margin-bottom:0}
+
+/* table */
+table{width:100%;border-collapse:collapse;margin:12px 0 16px;font-size:13.8px}
+th{background:var(--navy);color:#fff;font-weight:600;padding:9px 11px;text-align:center;
+ font-size:12.5px;letter-spacing:.2px}
+th:first-child{text-align:left}
+td{padding:9px 11px;border-bottom:1px solid var(--line2);text-align:right;
+ font-variant-numeric:tabular-nums}
+td:first-child{text-align:left;font-variant-numeric:normal}
+tbody tr:nth-child(even){background:#fafaf9}
+tbody tr.sum{background:#f2f5fa;font-weight:700}
+tbody tr.sum td{border-top:1.5px solid var(--navy)}
+.up{color:var(--good);font-weight:600} .dn{color:var(--bad);font-weight:600}
+.mut{color:var(--ink3)}
+caption{caption-side:top;text-align:left;font-size:13px;color:var(--ink2);
+ padding-bottom:5px;font-weight:600}
+
+/* 카드 상단 실적 요약 */
+.keyfig{margin:0;padding:16px 22px 4px;background:#fbfbfa;border-bottom:1px solid var(--line2)}
+.keyfig table{margin:0 0 12px;font-size:14px}
+.keyfig th{background:#eef1f5;color:var(--navy)}
+.keyfig td{padding:9px 11px}
+
+/* magnitude bar (single hue) */
+.bar{display:inline-block;height:7px;border-radius:4px;background:var(--accent);
+ vertical-align:middle;margin-right:6px;min-width:2px}
+.barcell{text-align:left!important;white-space:nowrap}
+
+/* circular ownership diagram */
+.loop{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
+ background:#fbfbfa;border:1px solid var(--line);border-radius:10px;padding:22px 14px;margin:14px 0}
+.node{background:#fff;border:2px solid var(--navy);border-radius:9px;padding:11px 17px;
+ font-size:16px;font-weight:700;color:var(--navy);text-align:center;line-height:1.45}
+.node small{display:block;font-weight:600;color:var(--ink2);font-size:13px;font-variant-numeric:tabular-nums;margin-top:2px}
+.arrow{text-align:center;line-height:1.25}
+.arrow b{display:block;color:var(--bad);font-size:17px;font-weight:800;font-variant-numeric:tabular-nums}
+.arrow span{display:block;color:var(--bad);font-size:15px;letter-spacing:-1px}
+
+.note{font-size:13px;color:var(--ink3);margin:6px 0 0;line-height:1.65}
+.src{font-size:12.3px;color:var(--ink3);border-left:2px solid var(--line);
+ padding-left:10px;margin:10px 0 0}
+.src b{color:var(--blue);font-weight:600}
+
+
+
+
+/* tabs */
+nav .wrap{gap:4px}
+.tab{appearance:none;background:none;border:0;border-bottom:2.5px solid transparent;
+ padding:14px 18px;font:inherit;font-size:15px;font-weight:600;color:var(--ink3);cursor:pointer;
+ font-family:inherit}
+.tab:hover{color:var(--navy)}
+.tab.active{color:var(--navy);border-bottom-color:var(--accent)}
+.pane{display:none} .pane.active{display:block}
+.pane > h2:first-child{margin-top:26px}
+
+/* 표 단위 표기 */
+caption .unit{float:right;font-weight:500;color:var(--ink3);font-size:12px;white-space:nowrap;
+ padding-left:12px}
+caption.bare{color:var(--ink3);font-weight:500;text-align:right}
+
+@media (max-width:820px){
+  .tab{padding:12px 12px;font-size:13.5px}
+  table{font-size:11.8px} td,th{padding:6px 7px}
+}
+@media print{
+  body{background:#fff;font-size:10.5pt}
+  nav{display:none} .pane{display:block!important} header{background:var(--navy)!important;-webkit-print-color-adjust:exact}
+  .card,.tile,.callout,table{break-inside:avoid}
+  h2{break-after:avoid}
+  .wrap{max-width:100%;padding:0}
+}
+</style>
+<style>
+/* revised compact report */
+header .sub{display:none}
+.overview{margin:26px 0 34px}
+.overview h2{margin-top:0}
+.overview-table td{vertical-align:top}
+.overview-table td:first-child{font-weight:700;color:var(--navy);width:18%}
+.overview-table td:nth-child(2){text-align:left;width:22%}
+.overview-table td:nth-child(3){text-align:left}
+.keypoint{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.compact-list{margin:0;padding-left:19px}
+.compact-list li{margin:4px 0;line-height:1.7}
+.issue-box{background:#f7f8fa;border:1px solid var(--line);border-radius:9px;padding:14px 16px}
+.issue-box b{color:var(--navy)}
+.summary-line{font-size:15.5px;line-height:1.75}
+.card{margin-bottom:24px}
+.block{padding-top:16px;padding-bottom:16px}
+</style>
+<style>
+/* v2 table cleanup */
+.card > .head{display:block}
+.card > .head h3{display:inline-block;margin-right:0}
+.card > .head .oneline{display:block;margin-top:14px}
+
+table{border-collapse:collapse;border:1px solid var(--line)}
+th,td{border:1px solid var(--line);text-align:center !important;vertical-align:middle}
+th:first-child,td:first-child{text-align:center !important}
+tbody tr:nth-child(even){background:#fafaf9}
+.keyfig{padding:16px 22px 12px}
+.keyfig table{margin:0;width:100%}
+.keyfig thead tr:first-child th{background:#eef1f5;color:var(--navy);font-weight:700}
+.keyfig thead tr:nth-child(2) th{background:#f7f8fa;color:var(--ink2);font-weight:600}
+.keyfig td{padding:10px 11px}
+caption.bare{text-align:right}
+</style>
+<style>
+/* 고려제강 v3 */
+.ksw-section-title{
+  font-size:18px;font-weight:800;color:var(--navy);
+  margin:0 0 14px;padding-bottom:8px;border-bottom:2px solid var(--navy)
+}
+.ksw-subtitle{
+  font-size:14.5px;font-weight:750;color:var(--ink2);
+  margin:20px 0 8px
+}
+.ksw-comment{
+  margin:13px 0 0;padding:13px 15px;background:#f7f8fa;
+  border-left:3px solid var(--accent);line-height:1.75
+}
+.ksw-comment b{color:var(--navy)}
+.ksw-flow{
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  flex-wrap:wrap;margin:10px 0 12px;padding:18px 12px;
+  background:#fbfbfa;border:1px solid var(--line);border-radius:10px
+}
+.ksw-flow .node{
+  min-width:118px;padding:10px 15px;background:#fff;
+  border:1.5px solid var(--navy);border-radius:8px;
+  color:var(--navy);font-weight:750;text-align:center
+}
+.ksw-flow .arrow{
+  min-width:58px;text-align:center;color:var(--ink2);
+  font-size:20px;line-height:1
+}
+.ksw-flow .arrow small{
+  display:block;font-size:11.5px;line-height:1.2;
+  color:var(--bad);font-weight:700;margin-bottom:3px
+}
+.ksw-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px
+}
+.ksw-mini{
+  background:#fbfbfa;border:1px solid var(--line);
+  border-radius:9px;padding:13px 15px;line-height:1.65
+}
+.ksw-mini b{color:var(--navy)}
+.ksw-note{
+  margin-top:8px;font-size:12.5px;line-height:1.65;color:var(--ink3)
+}
+#t-ksw table thead tr:first-child th{background:#eef1f5}
+#t-ksw table thead tr:nth-child(2) th{background:#f7f8fa}
+@media(max-width:820px){
+  .ksw-grid{grid-template-columns:1fr}
+  .ksw-flow .node{min-width:100px}
+}
+</style><style>
+header{padding:28px 0 24px}
+header h1{margin:0;font-size:26px;letter-spacing:-.4px}
+.card > .head{padding:18px 22px;background:#fbfbfa}
+.card > .head .section-label{font-size:21px;color:var(--navy);font-weight:800;letter-spacing:-.3px}
+.card > .head .oneline{margin-top:10px;flex:none}
+</style>
+<style>
+/* v5: 고려제강 표 헤더 가독성 수정 */
+#t-ksw table thead th{
+  color:var(--navy) !important;
+  background:#eef1f5 !important;
+  font-weight:700;
+}
+#t-ksw table thead tr:nth-child(2) th{
+  color:var(--ink2) !important;
+  background:#f7f8fa !important;
+  font-weight:600;
+}
+</style>
+<style>
+/* v6 readability */
+.ksw-comment,
+.ksw-mini,
+.card > .head .oneline,
+.block p{
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+.ksw-comment{
+  line-height:1.8;
+}
+.ksw-analysis-note{
+  margin:12px 0 0;
+  padding:14px 16px;
+  background:#f7f8fa;
+  border-left:3px solid var(--accent);
+  line-height:1.8;
+  word-break:keep-all;
+  text-wrap:pretty;
+}
+.ksw-analysis-note b{color:var(--navy)}
+.ksw-two-tables{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:8px;
+}
+@media(max-width:900px){
+  .ksw-two-tables{grid-template-columns:1fr}
+}
+</style><style>
+/* v9 line-break readability */
+.ksw-comment, .ksw-analysis-note, .issue-box, .block p, .compact-list li {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+</style><style>
+/* v10 실적 요약 문장을 해설 상자 글씨와 같게 */
+.card > .head .oneline, .card > .head .oneline *{font-size:15.5px !important;line-height:1.8 !important;color:var(--ink) !important;font-family:inherit !important;word-break:keep-all;text-wrap:pretty}
+</style></head>
+<body>
+<header>
+<div class="wrap"><h1>경쟁사 실적 요약</h1></div>
+</header>
+<nav><div class="wrap">
+<button class="tab active" data-t="mh">만호제강</button>
+<button class="tab" data-t="ksw">고려제강</button>
+<button class="tab" data-t="hsj">한국선재</button>
+<button class="tab" data-t="dis">동일제강</button>
+</div></nav>
+<div class="wrap">
+<section class="pane active" id="t-mh">
+<div class="card">
+<div class="head"><div class="section-label">실적 요약</div><div class="oneline">조정 기준 영업이익이 -12.6억원에서 3.0억원으로 흑자전환했습니다.<br/>MH다이나믹스 인수로 연결 매출은 566억원으로 증가했습니다.</div></div>
+<div class="keyfig">
+<table><caption class="bare">단위 : 억원</caption><thead><tr><th rowspan="2">구분</th><th colspan="3">매출액</th><th colspan="3">영업이익</th></tr><tr><th>전기</th><th>당기</th><th>증감</th><th>전기</th><th>당기</th><th>증감</th></tr></thead><tbody>
+<tr><td>별도</td><td>367</td><td>360</td><td class="dn">-1.9%</td><td>-12.6</td><td>+3.0</td><td class="up">흑자전환</td></tr>
+<tr><td>연결</td><td>367</td><td>566</td><td class="up">+54.3%</td><td>-12.6</td><td>+5.7</td><td class="up">흑자전환</td></tr>
+</tbody></table>
+<div class="note">※ 결산월 변경으로 제75기는 2026.07~12월(6개월)입니다. 이번 분기(2026.07~09)를 전년 같은 기간과 비교했으며, 전기 연결은 종속기업이 없어 별도와 같습니다.</div>
+</div>
+<div class="block">
+<h4>일회성 효과 조정</h4>
+<table>
+<caption>내부 기준 조정 영업이익(별도)<span class="unit">단위 : 억원</span></caption>
+<thead><tr><th>구분</th><th>2025.07~09</th><th>2026.07~09</th></tr></thead>
+<tbody>
+<tr><td>공시 영업이익</td><td>-6.0</td><td>+3.0</td></tr>
+<tr><td>충당부채 환입</td><td class="dn">-6.5</td><td class="mut">-</td></tr>
+<tr class="sum"><td>조정 영업이익</td><td class="dn">-12.6</td><td class="up">+3.0</td></tr>
+</tbody>
+</table>
+<div class="ksw-comment">이번 분기는 일회성 조정 항목이 없어 조정 영업이익은 <b>3.0억원</b>으로 동일합니다.<br/>전년 동기 조정 영업이익 <b>-12.6억원</b> 대비 <b>15.6억원 증가</b>했습니다.</div>
+</div>
+<div class="block">
+<h4>영업이익 증가 원인</h4>
+<table>
+<caption>부문별 영업이익(별도, 조정 기준)<span class="unit">단위 : 억원</span></caption>
+<thead><tr><th>부문</th><th>2025.07~09</th><th>2026.07~09</th><th>증감</th></tr></thead>
+<tbody>
+<tr><td><b>철강</b></td><td>-15.4</td><td>-2.9</td><td class="up">+12.4</td></tr>
+<tr><td>섬유</td><td>0.9</td><td>5.0</td><td class="up">+4.1</td></tr>
+<tr><td>기타</td><td>1.9</td><td>0.9</td><td class="dn">-1.0</td></tr>
+<tr class="sum"><td>합계</td><td>-12.6</td><td>3.0</td><td class="up">+15.6</td></tr>
+</tbody>
+</table>
+<div class="ksw-comment">철강부문 적자폭이 <b>15.4억원 → 2.9억원</b>으로 축소되며 영업이익이 증가했습니다.<br/>매출원가율이 90.9%에서 88.7%로 하락하고, 판관비(조정 기준)도 <b>8.2억원</b> 감소했습니다.</div>
+</div>
+<div class="block">
+<h4>종속기업 인수</h4>
+<table>
+<thead><tr><th>구분</th><th>MH시스템즈</th><th>MH다이나믹스</th></tr></thead>
+<tbody>
+<tr><td>사업</td><td>로봇제어기·전장</td><td>자동차부품</td></tr>
+<tr><td>지분 취득</td><td>2026.05.15 (100%)</td><td>2026.07.08 (100%)</td></tr>
+<tr><td>취득금액</td><td>62억원</td><td>200억원</td></tr>
+<tr><td>당분기 매출</td><td>71억원</td><td>136억원</td></tr>
+<tr><td>당분기 영업이익</td><td>0.9억원</td><td>2.8억원</td></tr>
+</tbody>
+</table>
+<div class="ksw-comment">MH다이나믹스를 순자산 가치(259억원)보다 낮은 가격(200억원)에 인수하여 <b>59억원의 일회성 이익</b>이 연결 기타수익에 반영되었습니다.</div>
+</div>
+<div class="block">
+<h4>주요 공시 이슈</h4>
+<div class="issue-box"><b>자기주식 소각 및 배당</b><br/>7월 자기주식 <b>638만주(269억원)</b>를 소각하고, 9월 주당 150원(43억원) 배당을 결의해 이익잉여금이 크게 감소하였습니다.<br/>인수 자금은 단기차입금 확대(430억 → 680억원)로 조달한 것으로 보입니다.</div>
+</div>
+</div>
+</section>
+<section class="pane" id="t-ksw">
+<div class="card">
+<div class="head"><div class="section-label">실적 요약</div><div class="oneline">별도에서는 로프 판매 부진과 재고 증가가 이어졌고, 연결에서는 선재부문 적자 확대로 수익성이 크게 하락했습니다.</div></div>
+<div class="block">
+<div class="ksw-section-title">별도 기준</div>
+<div class="ksw-subtitle">생산실적</div>
+<table>
+<caption class="bare">단위 : 톤</caption>
+<thead>
+<tr><th rowspan="2">사업부문</th><th colspan="3">생산실적</th></tr>
+<tr><th>2025.1~9</th><th>2026.1~9</th><th>증감</th></tr>
+</thead>
+<tbody>
+<tr><td>로프부문</td><td>46,553</td><td>46,174</td><td class="dn">-0.8%</td></tr>
+<tr><td>선재부문</td><td>87,353</td><td>94,689</td><td class="up">+8.4%</td></tr>
+<tr class="sum"><td>합계</td><td>133,906</td><td>140,863</td><td class="up">+5.2%</td></tr>
+</tbody>
+</table>
+<div class="ksw-subtitle">부문별 매출</div>
+<table>
+<caption class="bare">단위 : 억원</caption>
+<thead>
+<tr><th rowspan="2">부문</th><th colspan="3">매출액</th></tr>
+<tr><th>2025.1~9</th><th>2026.1~9</th><th>증감</th></tr>
+</thead>
+<tbody>
+<tr><td>로프류</td><td>1,816</td><td>1,728</td><td class="dn">-4.8%</td></tr>
+<tr><td>선재류</td><td>2,069</td><td>2,204</td><td class="up">+6.5%</td></tr>
+<tr><td>기타</td><td>299</td><td>338</td><td class="up">+13.3%</td></tr>
+<tr class="sum"><td>합계</td><td>4,184</td><td>4,271</td><td class="up">+2.1%</td></tr>
+</tbody>
+</table>
+<div class="ksw-subtitle">재고자산</div>
+<table>
+<caption class="bare">단위 : 억원</caption>
+<thead>
+<tr><th rowspan="2">구분</th><th colspan="3">재고자산</th></tr>
+<tr><th>2025년 말</th><th>2026.9월말</th><th>증감</th></tr>
+</thead>
+<tbody>
+<tr><td>별도 재고자산</td><td>1,010</td><td>1,256</td><td class="dn">+24.3%</td></tr>
+</tbody>
+</table>
+<div class="ksw-comment">로프부문은 생산이 전년 수준(-0.8%)을 유지했으나 매출은 <b>4.8% 감소</b>했고, 선재부문은 생산과 매출이 각각 <b>8.4%, 6.5% 증가</b>했습니다.<br/>별도 재고자산은 전기말 대비 <b>24.3% 증가</b>해 반기말(19.2%)보다 증가 폭이 확대됐습니다.<br/>상반기에 이어 로프 판매 부진과 선재 생산 확대가 재고 증가로 이어진 것으로 보입니다.</div>
+</div>
+<div class="block">
+<div class="ksw-section-title">연결 기준</div>
+<div class="ksw-subtitle">부문별 실적</div>
+<table>
+<caption class="bare">단위 : 억원</caption>
+<thead>
+<tr><th rowspan="2">부문</th><th colspan="3">매출액</th><th colspan="3">영업이익</th></tr>
+<tr><th>2025.1~9</th><th>2026.1~9</th><th>증감</th><th>2025.1~9</th><th>2026.1~9</th><th>증감</th></tr>
+</thead>
+<tbody>
+<tr><td><b>로프</b></td><td>3,048</td><td>2,801</td><td class="dn">-8.1%</td><td>300</td><td>107</td><td class="dn">-64.3%</td></tr>
+<tr><td><b>선재</b></td><td>9,691</td><td>10,069</td><td class="up">+3.9%</td><td>-15</td><td>-116</td><td class="dn">적자폭확대</td></tr>
+<tr><td>기타</td><td>859</td><td>907</td><td class="up">+5.6%</td><td>114</td><td>93</td><td class="dn">-18.4%</td></tr>
+<tr class="sum"><td>합계</td><td>13,597</td><td>13,776</td><td class="up">+1.3%</td><td>399</td><td>84</td><td class="dn">-78.9%</td></tr>
+</tbody>
+</table>
+<div class="ksw-comment">로프부문은 매출 <b>8.1%</b>, 영업이익 <b>64.3%</b>가 감소해 상반기의 부진이 3분기까지 이어졌습니다.<br/>선재부문은 매출이 3.9% 증가했지만 3분기에만 <b>115억원</b>의 영업손실을 기록해 적자폭이 확대됐습니다.</div>
+
+</div>
+</div>
+</section>
+<section class="pane" id="t-hsj">
+<div class="card">
+<div class="head"><div class="section-label">실적 요약</div><div class="oneline">상품 마진 개선으로 별도 영업이익, 피팅·밸브 자회사 성장으로 연결 영업이익이 크게 증가했습니다.</div></div>
+<div class="keyfig">
+<table><caption class="bare">단위 : 억원</caption><thead><tr><th rowspan="2">구분</th><th colspan="3">매출액</th><th colspan="3">영업이익</th></tr><tr><th>2025.1~9</th><th>2026.1~9</th><th>증감</th><th>2025.1~9</th><th>2026.1~9</th><th>증감</th></tr></thead><tbody>
+<tr><td>별도</td><td>1,150</td><td>1,291</td><td class="up">+12.3%</td><td>18</td><td>81</td><td class="up">+341.5%</td></tr>
+<tr><td>연결</td><td>1,655</td><td>2,042</td><td class="up">+23.4%</td><td>82</td><td>232</td><td class="up">+182.3%</td></tr>
+</tbody></table>
+</div>
+<div class="block">
+<h4>부문별 실적</h4>
+<table>
+<caption>별도 품목별 매출총이익률<span class="unit">단위 : 억원, %</span></caption>
+<thead><tr><th rowspan="2">구분</th><th colspan="2">매출액</th><th colspan="2">매출총이익률</th></tr><tr><th>2025.1~9</th><th>2026.1~9</th><th>2025.1~9</th><th>2026.1~9</th></tr></thead>
+<tbody>
+<tr><td><b>상품(철강재)</b></td><td>784</td><td>880</td><td>7.0%</td><td class="up">12.9%</td></tr>
+<tr><td>제품(제조)</td><td>351</td><td>394</td><td>12.1%</td><td class="dn">11.2%</td></tr>
+<tr><td>기타</td><td>15</td><td>17</td><td>63.4%</td><td>53.0%</td></tr>
+<tr class="sum"><td>합계</td><td>1,150</td><td>1,291</td><td>9.3%</td><td class="up">12.9%</td></tr>
+</tbody>
+</table>
+
+<div class="ksw-comment">별도는 상품 매출총이익률이 <b>7.0% → 12.9%</b>로 상승했고, 제조 제품은 ROD 단가 상승(+6.4%)으로 이익률이 소폭 하락했습니다.<br/>연결은 피팅·밸브 부문 영업이익이 <b>71억 → 156억원</b>으로 증가했습니다.</div>
+</div>
+<div class="block">
+<h4>주요 공시 이슈</h4>
+<div class="issue-box"><b>전환사채 평가손실로 연결 순이익 감소</b><br/>연결 누계 순이익은 상반기 한선엔지니어링 전환사채 평가손실 <b>302억원</b>의 영향으로 70억 → 34억원으로 감소했습니다.<br/>상반기 중 전환사채가 모두 전환·소각되어 3분기에는 관련 손실이 발생하지 않았습니다.</div>
+</div>
+</div>
+</section>
+<section class="pane" id="t-dis">
+<div class="card">
+<div class="head"><div class="section-label">실적 요약</div><div class="oneline">누계 영업이익은 흑자전환했지만 감가상각비 감소 효과가 크고, 3분기 단독으로는 다시 영업손실을 기록했습니다.<br/>원가 부담도 지속되고 있어 본질적인 마진 개선은 제한적입니다.</div></div>
+<div class="keyfig">
+<table><caption class="bare">단위 : 억원</caption><thead><tr><th rowspan="2">구분</th><th colspan="3">매출액</th><th colspan="3">영업이익</th></tr><tr><th>2025.1~9</th><th>2026.1~9</th><th>증감</th><th>2025.1~9</th><th>2026.1~9</th><th>증감</th></tr></thead><tbody><tr><td>별도</td><td>1,161</td><td>1,195</td><td class="up">+2.9%</td><td>-7</td><td>+1</td><td class="up">흑자전환</td></tr></tbody></table>
+</div>
+<div class="block">
+<h4>핵심 실적</h4>
+<p class="summary-line">누계 영업이익은 <b>-7억 → +1억</b>으로 흑자전환했습니다. 같은 기간 감가상각비가 <b>36억 → 18억</b>으로 감소한 것이 주 원인입니다.</p>
+<table>
+<caption>기계장치 장부가액 추이<span class="unit">단위 : 억원</span></caption>
+<thead><tr><th>시점</th><th>장부가액</th><th>주요 변동</th></tr></thead>
+<tbody>
+<tr><td>2025.09.30</td><td>73</td><td class="mut">전기 3분기 감가상각 반영</td></tr>
+<tr><td>2025.12.31</td><td class="dn">17</td><td class="dn">기계장치 손상차손 50억, 감가상각 반영</td></tr>
+<tr><td>2026.09.30</td><td>12</td><td class="mut">당기 3분기 감가상각 반영</td></tr>
+</tbody>
+</table>
+</div>
+<div class="block"><h4>핵심 원인</h4>
+<table>
+<caption>분기별 손익(3개월)<span class="unit">단위 : 억원</span></caption>
+<thead><tr><th>구분</th><th>2026.4~6</th><th>2026.7~9</th></tr></thead>
+<tbody>
+<tr><td>매출액</td><td>419</td><td class="dn">390</td></tr>
+<tr><td>매출원가</td><td>401</td><td class="up">376</td></tr>
+<tr><td>판매비와관리비</td><td>14.8</td><td class="dn">17.3</td></tr>
+<tr class="sum"><td>영업이익</td><td>3.9</td><td class="dn">-3.2</td></tr>
+</tbody>
+</table>
+<div class="ksw-comment">전년도 하반기 기계장치 <b>50억원 손상차손</b> 이후 감가상각비가 감소했고, 선재 원료단가는 <b>8.4% 상승</b>한 반면 판매단가는 <b>1.9% 상승</b>에 그쳤습니다.<br/>3분기 단독으로는 매출 감소와 대손상각비(2.4억원) 발생으로 영업손실 <b>3.2억원</b>을 기록해 2분기의 흑자 기조를 이어가지 못했습니다.</div>
+</div>
+<div class="block">
+<h4>주요 공시 이슈</h4>
+<table>
+<caption>주주 현황<span class="unit">단위 : %</span></caption>
+<thead><tr><th>주주</th><th>관계</th><th>2025년 말</th><th>2026.9월말</th></tr></thead>
+<tbody>
+<tr><td><b>에스폼(주)</b></td><td>특수관계인</td><td>48.17</td><td class="up">54.96</td></tr>
+<tr><td>김준년</td><td>최대주주(본인)</td><td>4.93</td><td>4.93</td></tr>
+<tr><td>기타 특수관계인(6명)</td><td>특수관계인</td><td>10.51</td><td>10.02</td></tr>
+<tr class="sum"><td>최대주주 등 소계</td><td></td><td>63.60</td><td class="up">69.91</td></tr>
+<tr><td>기타 주주</td><td>-</td><td>36.40</td><td>30.09</td></tr>
+<tr class="sum"><td>합계</td><td></td><td>100.00</td><td>100.00</td></tr>
+</tbody>
+</table>
+<div class="issue-box"><b>에스폼(주) 지분 확대 완료</b><br/>7월 공개매수 결과가 반영되어 에스폼(주) 지분율이 <b>48.17% → 54.96%</b>로 상승했고, 최대주주 및 특수관계인 지분 합계는 <b>69.91%</b>입니다.</div>
+</div>
+</div>
+</section>
+</div>
+<script>
+document.querySelectorAll('.tab').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});
+    document.querySelectorAll('.pane').forEach(function(x){x.classList.remove('active')});
+    b.classList.add('active');
+    document.getElementById('t-'+b.dataset.t).classList.add('active');
+    window.scrollTo({top:0});
+  });
+});
+</script>
+</body>
+</html>
